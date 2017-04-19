@@ -1,15 +1,19 @@
 import XCTest
-@testable import Logg
+import Logg
 
 class LoggTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        XCTAssertEqual(Logg().text, "Hello, World!")
+    
+    override func setUp() {
+        var path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        path = path?.appendingPathComponent("logg_test.log")
+        Log.loggers = [try! FileLogger(path: path!)]
+    }
+    
+    func testFileLogger() {
+        Log.debug("write")
     }
 
-
     static var allTests = [
-        ("testExample", testExample),
+        ("testExample", testFileLogger),
     ]
 }

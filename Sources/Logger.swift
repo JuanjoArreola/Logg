@@ -2,7 +2,7 @@ import Foundation
 
 public protocol Logger {
     
-    var levels: [LogLevel] { get set }
+    var level: Log.Level { get set }
     var formatter: Formatter { get set }
     
     func debug(_ message: @autoclosure () -> Any, context: LogContext)
