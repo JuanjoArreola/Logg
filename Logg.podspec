@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Logg"
-  s.version      = "0.9.1"
+  s.version      = "0.9.2"
   s.summary      = "A logging framework for swift"
 
   s.homepage     = "https://github.com/JuanjoArreola/Logg"

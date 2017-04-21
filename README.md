@@ -14,10 +14,10 @@ Log.severe("some error")
 ```
 ###### Prints:
 ```
-04-21 10:49:03.922 LoggTests.swift testFileLogger() [13] Debug: Current loggers: [Logg.FileLogger]
-04-21 10:49:03.923 LoggTests.swift testFileLogger() [14] Warning: Using formatter: Logg.DefaultFormatter
-04-21 10:49:03.926 LoggTests.swift testFileLogger() [15] Error: invalid
-04-21 10:49:03.926 LoggTests.swift testFileLogger() [16] Severe: some error
+04-21 13:04:30.040 LoggTests.swift testFileLogger() [14] ℹ️ Debug: Current loggers: [Logg.ConsoleLogger]
+04-21 13:04:30.041 LoggTests.swift testFileLogger() [15] ⚠️ Warning: Using formatter: Logg.DefaultFormatter
+04-21 13:04:30.041 LoggTests.swift testFileLogger() [16] ❗ Error: invalid
+04-21 13:04:30.041 LoggTests.swift testFileLogger() [17] ‼️ Severe: some error
 ```
 
 ## Configuration

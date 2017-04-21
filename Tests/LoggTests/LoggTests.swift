@@ -15,6 +15,12 @@ class LoggTests: XCTestCase {
         Log.error(TestError.invalid)
         Log.severe("some error")
     }
+    
+    func testFormatter() {
+        var logger = Log.loggers.first
+        logger?.formatter = CustomFormatter()
+        Log.severe("some error")
+    }
 
     static var allTests = [
         ("testExample", testFileLogger),
@@ -23,4 +29,11 @@ class LoggTests: XCTestCase {
 
 enum TestError: Error {
     case invalid
+}
+
+class CustomFormatter: Logg.Formatter {
+    
+    func format(_ message: @autoclosure () -> Any, level: Log.Level, context: LogContext) -> String {
+        return String(describing: message())
+    }
 }

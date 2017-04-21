@@ -13,7 +13,7 @@ public class ConsoleLogger: Logger {
     }
     
     public convenience init() {
-        self.init(formatter: DefaultFormatter.shared, level: .all)
+        self.init(formatter: ConsoleFormatter(), level: .all)
     }
     
     public func debug(_ message: @autoclosure () -> Any, context: LogContext) {
