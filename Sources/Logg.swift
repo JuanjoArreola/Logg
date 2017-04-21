@@ -5,12 +5,13 @@ public class Log {
     public struct Level: OptionSet {
         public let rawValue: Int
         
-        static let debug = Level(rawValue:  1 << 0)
-        static let warning = Level(rawValue:  1 << 1)
-        static let error = Level(rawValue:  1 << 2)
-        static let severe = Level(rawValue:  1 << 3)
+        public static let debug = Level(rawValue:  1 << 0)
+        public static let warning = Level(rawValue:  1 << 1)
+        public static let error = Level(rawValue:  1 << 2)
+        public static let severe = Level(rawValue:  1 << 3)
         
-        static let all: Level = [.debug, .warning, .error, .severe]
+        public static let all: Level = [.debug, .warning, .error, .severe]
+        public static let none: Level = []
         
         public init(rawValue: Int) {
             self.rawValue = rawValue

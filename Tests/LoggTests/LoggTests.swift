@@ -10,10 +10,17 @@ class LoggTests: XCTestCase {
     }
     
     func testFileLogger() {
-        Log.debug("write")
+        Log.debug("Current loggers: \(Log.loggers)")
+        Log.warn("Using formatter: \(Log.loggers.first!.formatter)")
+        Log.error(TestError.invalid)
+        Log.severe("some error")
     }
 
     static var allTests = [
         ("testExample", testFileLogger),
     ]
+}
+
+enum TestError: Error {
+    case invalid
 }
