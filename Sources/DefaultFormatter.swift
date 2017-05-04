@@ -4,9 +4,9 @@ open class DefaultFormatter: Formatter {
     
     public static var shared = DefaultFormatter()
     
-    var formatter: DateFormatter
+    public var formatter: DateFormatter
     
-    init() {
+    public init() {
         formatter = DateFormatter()
         formatter.dateFormat = "MM-dd HH:mm:ss.SSS"
     }
@@ -15,13 +15,13 @@ open class DefaultFormatter: Formatter {
         return string(from: context) + " \(string(from: level)): \(String(describing: message()))"
     }
     
-    func string(from context: LogContext) -> String {
+    open func string(from context: LogContext) -> String {
         let date = formatter.string(from: context.date)
         let file = context.file.components(separatedBy: "/").last ?? ""
         return "\(date) \(file) \(context.function) [\(context.line)]"
     }
     
-    func string(from level: LogLevel) -> String {
+    open func string(from level: LogLevel) -> String {
         switch level {
         case LogLevel.debug: return "Debug"
         case LogLevel.warning: return "Warning"

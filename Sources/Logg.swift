@@ -2,10 +2,15 @@ import Foundation
 
 public class LoggerContainer {
     
-    public init() {
+    public convenience init() {
+        self.init(loggers: [ConsoleLogger()])
     }
     
-    public var loggers: [Logger] = [ConsoleLogger()]
+    public required init(loggers: [Logger]) {
+        self.loggers = loggers
+    }
+    
+    public var loggers: [Logger]
     
     public func debug(_ message: @autoclosure () -> Any, file: String = #file, function: StaticString = #function, line: Int = #line) {
         let context = LogContext(file: file, function: function.description, line: line)
