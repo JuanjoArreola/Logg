@@ -4,10 +4,10 @@ private let logQueue = DispatchQueue(label: "com.logg.ConsoleQueue", attributes:
 
 public class ConsoleLogger: Logger {
     
-    public var level: Log.Level = .all
+    public var level: LogLevel = .all
     public var formatter: Formatter
     
-    public required init(formatter: Formatter, level: Log.Level) {
+    public required init(formatter: Formatter, level: LogLevel) {
         self.formatter = formatter
         self.level = level
     }
@@ -32,7 +32,7 @@ public class ConsoleLogger: Logger {
         log(message, context: context, level: .severe)
     }
     
-    private func log(_ message: @autoclosure () -> Any, context: LogContext, level: Log.Level) {
+    private func log(_ message: @autoclosure () -> Any, context: LogContext, level: LogLevel) {
         if level.contains(level) {
             let string = formatter.format(message, level: level, context: context)
             logQueue.async {

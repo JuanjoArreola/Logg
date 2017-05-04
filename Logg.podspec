@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Logg"
-  s.version      = "0.9.2"
+  s.version      = "0.10"
   s.summary      = "A logging framework for swift"
 
   s.homepage     = "https://github.com/JuanjoArreola/Logg"
@@ -29,6 +29,6 @@ Pod::Spec.new do |s|
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  # s.requires_arc = true
+  s.requires_arc = true
 
 end

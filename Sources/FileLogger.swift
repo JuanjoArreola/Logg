@@ -10,7 +10,7 @@ public enum FileLoggerError: Error {
 public class FileLogger: Logger {
     
     public var formatter: Formatter
-    public var level: Log.Level = .all
+    public var level: LogLevel = .all
     public let file: URL
     public var fallbackLogger: Logger?
     
@@ -48,7 +48,7 @@ public class FileLogger: Logger {
         log(message, context: context, level: .severe)
     }
     
-    private func log(_ message: @autoclosure () -> Any, context: LogContext, level: Log.Level) {
+    private func log(_ message: @autoclosure () -> Any, context: LogContext, level: LogLevel) {
         if !level.contains(level) { return }
         let string = formatter.format(message, level: level, context: context) + "\n"
         let object = message()

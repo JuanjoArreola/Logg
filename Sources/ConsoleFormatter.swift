@@ -2,12 +2,12 @@ import Foundation
 
 class ConsoleFormatter: DefaultFormatter {
     
-    override func string(from level: Log.Level) -> String {
+    override func string(from level: LogLevel) -> String {
         switch level {
-        case Log.Level.debug: return "ℹ️ Debug"
-        case Log.Level.warning: return "⚠️ Warning"
-        case Log.Level.error: return "❗ Error"
-        case Log.Level.severe: return "‼️ Severe"
+        case LogLevel.debug: return "ℹ️ Debug"
+        case LogLevel.warning: return "⚠️ Warning"
+        case LogLevel.error: return "❗ Error"
+        case LogLevel.severe: return "‼️ Severe"
         default:
             return ""
         }

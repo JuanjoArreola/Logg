@@ -3,6 +3,8 @@ import Logg
 
 class LoggTests: XCTestCase {
     
+    var Log = LoggerContainer()
+    
     override func setUp() {
         var path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
         path = path?.appendingPathComponent("logg_test.log")
@@ -33,7 +35,7 @@ enum TestError: Error {
 
 class CustomFormatter: Logg.Formatter {
     
-    func format(_ message: @autoclosure () -> Any, level: Log.Level, context: LogContext) -> String {
+    func format(_ message: @autoclosure () -> Any, level: LogLevel, context: LogContext) -> String {
         return String(describing: message())
     }
 }
