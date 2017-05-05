@@ -49,7 +49,7 @@ public class FileLogger: Logger {
     }
     
     private func log(_ message: @autoclosure () -> Any, context: LogContext, level: LogLevel) {
-        if !level.contains(level) { return }
+        if !self.level.contains(level) { return }
         let string = formatter.format(message, level: level, context: context) + "\n"
         let object = message()
         logQueue.async {

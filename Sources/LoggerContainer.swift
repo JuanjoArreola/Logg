@@ -10,6 +10,14 @@ public class LoggerContainer {
         self.loggers = loggers
     }
     
+    var level: LogLevel {
+        get {
+            return loggers.reduce(LogLevel.none, { $0.union($1.level) })
+        } set {
+            loggers.forEach({ $0.level = level })
+        }
+    }
+    
     public var loggers: [Logger]
     
     public func debug(_ message: @autoclosure () -> Any, file: String = #file, function: StaticString = #function, line: Int = #line) {

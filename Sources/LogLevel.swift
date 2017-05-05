@@ -1,11 +1,3 @@
-//
-//  LogLevel.swift
-//  Logg
-//
-//  Created by Juan Jose Arreola on 04/05/17.
-//
-//
-
 import Foundation
 
 public struct LogLevel: OptionSet {

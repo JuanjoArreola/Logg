@@ -33,7 +33,7 @@ public class ConsoleLogger: Logger {
     }
     
     private func log(_ message: @autoclosure () -> Any, context: LogContext, level: LogLevel) {
-        if level.contains(level) {
+        if self.level.contains(level) {
             let string = formatter.format(message, level: level, context: context)
             logQueue.async {
                 print(string)

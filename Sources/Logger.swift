@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol Logger {
+public protocol Logger: class {
     
     var level: LogLevel { get set }
     var formatter: Formatter { get set }
