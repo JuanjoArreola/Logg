@@ -5,9 +5,9 @@ private let logQueue = DispatchQueue(label: "com.logg.ConsoleQueue", attributes:
 public class ConsoleLogger: Logger {
     
     public var level: LogLevel = .all
-    public var formatter: Formatter
+    public var formatter: LogFormatter
     
-    public required init(formatter: Formatter, level: LogLevel) {
+    public required init(formatter: LogFormatter, level: LogLevel) {
         self.formatter = formatter
         self.level = level
     }

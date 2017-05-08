@@ -9,12 +9,12 @@ public enum FileLoggerError: Error {
 
 public class FileLogger: Logger {
     
-    public var formatter: Formatter
+    public var formatter: LogFormatter
     public var level: LogLevel = .all
     public let file: URL
     public var fallbackLogger: Logger?
     
-    public required init(formatter: Formatter, path: URL) throws {
+    public required init(formatter: LogFormatter, path: URL) throws {
         if !path.isFileURL {
             throw FileLoggerError.invalidFile
         }

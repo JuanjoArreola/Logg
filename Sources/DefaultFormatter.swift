@@ -1,6 +1,6 @@
 import Foundation
 
-open class DefaultFormatter: Formatter {
+open class DefaultFormatter: LogFormatter {
     
     public static var shared = DefaultFormatter()
     
