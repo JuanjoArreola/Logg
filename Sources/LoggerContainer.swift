@@ -10,11 +10,11 @@ public class LoggerContainer {
         self.loggers = loggers
     }
     
-    var level: LogLevel {
+    public var level: LogLevel {
         get {
             return loggers.reduce(LogLevel.none, { $0.union($1.level) })
         } set {
-            loggers.forEach({ $0.level = level })
+            loggers.forEach({ $0.level = newValue })
         }
     }
     
