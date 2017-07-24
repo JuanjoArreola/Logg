@@ -19,7 +19,7 @@ class LoggTests: XCTestCase {
     }
     
     func testFormatter() {
-        var logger = Log.loggers.first
+        let logger = Log.loggers.first
         logger?.formatter = CustomFormatter()
         Log.severe("some error")
     }
@@ -33,7 +33,7 @@ enum TestError: Error {
     case invalid
 }
 
-class CustomFormatter: Logg.Formatter {
+class CustomFormatter: LogFormatter {
     
     func format(_ message: @autoclosure () -> Any, level: LogLevel, context: LogContext) -> String {
         return String(describing: message())
