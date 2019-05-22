@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Logg"
-  s.version      = "2.0.0"
+  s.version      = "2.1.0"
   s.summary      = "A logging framework for swift"
 
   s.homepage     = "https://github.com/JuanjoArreola/Logg"
@@ -16,6 +16,8 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.9"
   s.watchos.deployment_target = "2.0"
   s.tvos.deployment_target = "9.0"
+  
+  s.swift_version = '5.0'
 
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

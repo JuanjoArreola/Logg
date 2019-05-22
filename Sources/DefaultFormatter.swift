@@ -11,7 +11,7 @@ open class DefaultFormatter: LogFormatter {
         formatter.dateFormat = "MM-dd HH:mm:ss.SSS"
     }
     
-    open func format(_ message: @autoclosure () -> Any, level: LogLevel, context: LogContext) -> String {
+    open func format(_ message: @autoclosure () -> Any?, level: LogLevel, context: LogContext) -> String {
         return string(from: context) + " \(string(from: level)): \(String(describing: message()))"
     }
     

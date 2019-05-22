@@ -32,25 +32,25 @@ public class FileLogger: Logger {
         try self.init(formatter: DefaultFormatter.shared, path: path)
     }
     
-    public func debug(_ message: @autoclosure () -> Any, context: LogContext) {
-        log(message, context: context, level: .debug)
+    public func debug(_ message: @autoclosure () -> Any?, context: LogContext) {
+        log(message(), context: context, level: .debug)
     }
     
-    public func warn(_ message: @autoclosure () -> Any, context: LogContext) {
-        log(message, context: context, level: .warning)
+    public func warn(_ message: @autoclosure () -> Any?, context: LogContext) {
+        log(message(), context: context, level: .warning)
     }
     
-    public func error(_ message: @autoclosure () -> Any, context: LogContext, userInfo: [String : Any]?) {
-        log(message, context: context, level: .error)
+    public func error(_ message: @autoclosure () -> Any?, context: LogContext, userInfo: [String : Any]?) {
+        log(message(), context: context, level: .error)
     }
     
-    public func severe(_ message: @autoclosure () -> Any, context: LogContext, userInfo: [String : Any]?) {
-        log(message, context: context, level: .severe)
+    public func severe(_ message: @autoclosure () -> Any?, context: LogContext, userInfo: [String : Any]?) {
+        log(message(), context: context, level: .severe)
     }
     
-    private func log(_ message: @autoclosure () -> Any, context: LogContext, level: LogLevel) {
+    private func log(_ message: @autoclosure () -> Any?, context: LogContext, level: LogLevel) {
         if !self.level.contains(level) { return }
-        let string = formatter.format(message, level: level, context: context) + "\n"
+        let string = formatter.format(message(), level: level, context: context) + "\n"
         let object = message()
         logQueue.async {
             do {
