@@ -12,7 +12,11 @@ open class DefaultFormatter: LogFormatter {
     }
     
     open func format(_ message: @autoclosure () -> Any?, level: LogLevel, context: LogContext) -> String {
-        return string(from: context) + " \(string(from: level)): \(String(describing: message()))"
+        var description: String = "nil"
+        if let instance = message() {
+            description = String(describing: instance)
+        }
+        return string(from: context) + " \(string(from: level)): \(description)"
     }
     
     open func string(from context: LogContext) -> String {

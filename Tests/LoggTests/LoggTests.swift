@@ -3,25 +3,25 @@ import Logg
 
 class LoggTests: XCTestCase {
     
-    var Log = LoggerContainer()
+    var log = CompositeLogger()
     
     override func setUp() {
         var path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
         path = path?.appendingPathComponent("logg_test.log")
-        Log.loggers = [try! FileLogger(path: path!)]
+        log.loggers = [try! FileLogger(path: path!)]
     }
     
     func testFileLogger() {
-        Log.debug("Current loggers: \(Log.loggers)")
-        Log.warn("Using formatter: \(Log.loggers.first!.formatter)")
-        Log.error(TestError.invalid)
-        Log.severe("some error")
+        log.debug("Current loggers: \(log.loggers)")
+        log.warn("Using formatter: \(log.loggers.first!.formatter)")
+        log.error(TestError.invalid)
+        log.severe("some error")
     }
     
     func testFormatter() {
-        let logger = Log.loggers.first
+        let logger = log.loggers.first
         logger?.formatter = CustomFormatter()
-        Log.severe("some error")
+        log.severe("some error")
     }
 
     static var allTests = [
@@ -34,8 +34,7 @@ enum TestError: Error {
 }
 
 class CustomFormatter: LogFormatter {
-    
-    func format(_ message: @autoclosure () -> Any, level: LogLevel, context: LogContext) -> String {
-        return String(describing: message())
+    func format(_ message: @autoclosure () -> Any?, level: LogLevel, context: LogContext) -> String {
+        return message() == nil ? String(describing: message()) : String(describing: message()!)
     }
 }
