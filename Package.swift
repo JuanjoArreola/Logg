@@ -12,7 +12,7 @@ let package = Package(
     ],
     dependencies: [],
     targets: [
-        .target(name: "Logg", dependencies: [], path: "Sources"),
-        .testTarget(name: "LoggTests", dependencies: ["Logg"], path: "Tests")
+        .target(name: "Logg", dependencies: []),
+        .testTarget(name: "LoggTests", dependencies: ["Logg"])
     ]
 )
