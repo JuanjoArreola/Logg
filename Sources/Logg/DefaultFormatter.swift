@@ -27,10 +27,10 @@ open class DefaultFormatter: LogFormatter {
     
     open func string(from level: LogLevel) -> String {
         switch level {
+        case LogLevel.info: return "Info"
         case LogLevel.debug: return "Debug"
-        case LogLevel.warning: return "Warning"
         case LogLevel.error: return "Error"
-        case LogLevel.severe: return "Severe"
+        case LogLevel.fault: return "Fault"
         default:
             return ""
         }

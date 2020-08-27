@@ -13,15 +13,15 @@ class LoggTests: XCTestCase {
     
     func testFileLogger() {
         log.debug("Current loggers: \(log.loggers)")
-        log.warn("Using formatter: \(log.loggers.first!.formatter)")
+        log.info("Using formatter: \(log.loggers.first!.formatter)")
         log.error(TestError.invalid)
-        log.severe("some error")
+        log.fault("some error")
     }
     
     func testFormatter() {
         let logger = log.loggers.first
         logger?.formatter = CustomFormatter()
-        log.severe("some error")
+        log.fault("some error")
     }
 
     static var allTests = [

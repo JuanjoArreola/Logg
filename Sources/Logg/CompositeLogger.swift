@@ -20,14 +20,14 @@ public class CompositeLogger {
     
     public var loggers: [Logger]
     
-    public func debug(_ message: @autoclosure () -> Any?, file: String = #file, function: StaticString = #function, line: Int = #line) {
+    public func info(_ message: @autoclosure () -> Any?, file: String = #file, function: StaticString = #function, line: Int = #line, userInfo: [String: Any]? = nil) {
         let context = LogContext(file: file, function: function.description, line: line)
-        loggers.forEach({ $0.debug(message(), context: context) })
+        loggers.forEach({ $0.info(message(), context: context, userInfo: userInfo) })
     }
     
-    public func warn(_ message: @autoclosure () -> Any?, file: String = #file, function: StaticString = #function, line: Int = #line) {
+    public func debug(_ message: @autoclosure () -> Any?, file: String = #file, function: StaticString = #function, line: Int = #line, userInfo: [String: Any]? = nil) {
         let context = LogContext(file: file, function: function.description, line: line)
-        loggers.forEach({ $0.warn(message(), context: context) })
+        loggers.forEach({ $0.debug(message(), context: context, userInfo: userInfo) })
     }
     
     public func error(_ message: @autoclosure () -> Any?, file: String = #file, function: StaticString = #function, line: Int = #line, userInfo: [String: Any]? = nil) {
@@ -35,8 +35,8 @@ public class CompositeLogger {
         loggers.forEach({ $0.error(message(), context: context, userInfo: userInfo) })
     }
     
-    public func severe(_ message: @autoclosure () -> Any?, file: String = #file, function: StaticString = #function, line: Int = #line, userInfo: [String: Any]? = nil) {
+    public func fault(_ message: @autoclosure () -> Any?, file: String = #file, function: StaticString = #function, line: Int = #line, userInfo: [String: Any]? = nil) {
         let context = LogContext(file: file, function: function.description, line: line)
-        loggers.forEach({ $0.severe(message(), context: context, userInfo: userInfo) })
+        loggers.forEach({ $0.fault(message(), context: context, userInfo: userInfo) })
     }
 }

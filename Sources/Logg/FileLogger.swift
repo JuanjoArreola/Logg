@@ -32,20 +32,20 @@ public class FileLogger: Logger {
         try self.init(formatter: DefaultFormatter.shared, path: path)
     }
     
-    public func debug(_ message: @autoclosure () -> Any?, context: LogContext) {
-        log(message(), context: context, level: .debug)
+    public func info(_ message: @autoclosure () -> Any?, context: LogContext, userInfo: [String : Any]?) {
+        log(message(), context: context, level: .info)
     }
     
-    public func warn(_ message: @autoclosure () -> Any?, context: LogContext) {
-        log(message(), context: context, level: .warning)
+    public func debug(_ message: @autoclosure () -> Any?, context: LogContext, userInfo: [String : Any]?) {
+        log(message(), context: context, level: .debug)
     }
     
     public func error(_ message: @autoclosure () -> Any?, context: LogContext, userInfo: [String : Any]?) {
         log(message(), context: context, level: .error)
     }
     
-    public func severe(_ message: @autoclosure () -> Any?, context: LogContext, userInfo: [String : Any]?) {
-        log(message(), context: context, level: .severe)
+    public func fault(_ message: @autoclosure () -> Any?, context: LogContext, userInfo: [String : Any]?) {
+        log(message(), context: context, level: .fault)
     }
     
     private func log(_ message: @autoclosure () -> Any?, context: LogContext, level: LogLevel) {
@@ -57,7 +57,7 @@ public class FileLogger: Logger {
                 try self.append(string: string)
             } catch {
                 self.fallback(error: error)
-                self.fallbackLogger?.debug(object, context: context)
+                self.fallbackLogger?.debug(object, context: context, userInfo: nil)
             }
         }
     }

@@ -16,20 +16,20 @@ public class ConsoleLogger: Logger {
         self.init(formatter: ConsoleFormatter(), level: .all)
     }
     
-    public func debug(_ message: @autoclosure () -> Any?, context: LogContext) {
-        log(message(), context: context, level: .debug)
+    public func info(_ message: @autoclosure () -> Any?, context: LogContext, userInfo: [String : Any]? = nil) {
+        log(message(), context: context, level: .info)
     }
     
-    public func warn(_ message: @autoclosure () -> Any?, context: LogContext) {
-        log(message(), context: context, level: .warning)
+    public func debug(_ message: @autoclosure () -> Any?, context: LogContext, userInfo: [String : Any]? = nil) {
+        log(message(), context: context, level: .debug)
     }
     
     public func error(_ message: @autoclosure () -> Any?, context: LogContext, userInfo: [String : Any]? = nil) {
         log(message(), context: context, level: .error)
     }
     
-    public func severe(_ message: @autoclosure () -> Any?, context: LogContext, userInfo: [String : Any]? = nil) {
-        log(message(), context: context, level: .severe)
+    public func fault(_ message: @autoclosure () -> Any?, context: LogContext, userInfo: [String : Any]? = nil) {
+        log(message(), context: context, level: .fault)
     }
     
     private func log(_ message: @autoclosure () -> Any?, context: LogContext, level: LogLevel) {
