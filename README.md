@@ -7,17 +7,17 @@
 ## Usage
 
 ```swift
-Log.debug("Current loggers: \(Log.loggers)")
-Log.warn("Using formatter: \(Log.loggers.first!.formatter)")
-Log.error(TestError.invalid)
-Log.severe("some error")
+logger.info("Current loggers: \(Log.loggers)")
+logger.debug("Using formatter: \(Log.loggers.first!.formatter)")
+logger.error(TestError.invalid)
+logger.fault("some error")
 ```
 ###### Prints:
 ```
-04-21 13:04:30.040 LoggTests.swift testFileLogger() [14] ℹ️ Debug: Current loggers: [Logg.ConsoleLogger]
-04-21 13:04:30.041 LoggTests.swift testFileLogger() [15] ⚠️ Warning: Using formatter: Logg.DefaultFormatter
+04-21 13:04:30.040 LoggTests.swift testFileLogger() [14] ❕ Info: Current loggers: [Logg.ConsoleLogger]
+04-21 13:04:30.041 LoggTests.swift testFileLogger() [15] 🐛 Debug: Using formatter: Logg.DefaultFormatter
 04-21 13:04:30.041 LoggTests.swift testFileLogger() [16] ❗ Error: invalid
-04-21 13:04:30.041 LoggTests.swift testFileLogger() [17] ‼️ Severe: some error
+04-21 13:04:30.041 LoggTests.swift testFileLogger() [17] ‼️ Fault: some error
 ```
 
 ## Configuration
